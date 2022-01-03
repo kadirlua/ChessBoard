@@ -19,7 +19,7 @@ bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition
 {
     auto piecePos = get_position();
 
-    for (int i = 0; i < pieces.size(); i++) {
+    for (size_t i = 0; i < pieces.size(); i++) {
         // the piece is our piece?
         if (pieces[i]->get_position() == piecePos) {
             continue;
