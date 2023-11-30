@@ -12,14 +12,14 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     auto pieceColor = GetColor();
 
     // if the same position, return false
-    if (piecePos == pos)
-        return false;
+    if (piecePos == pos) {
+		return false;
+	}
 
-    int direction{1};
-    int startPoint{1};
+    int direction{ 1 };
+    int startPoint{ 1 };
 
-    if (pieceColor == Color::Black)
-    {
+    if (pieceColor == Color::Black) {
         direction = -1;
         startPoint = 6;
     }
@@ -28,7 +28,7 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     if (direction == 1 && piecePos.first > pos.first) {
         return false;
     }
-    else if (direction == -1 && piecePos.first < pos.first) {
+    if (direction == -1 && piecePos.first < pos.first) {
         return false;
     }
 
@@ -48,8 +48,7 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
 
     int dist = (pos.first - piecePos.first) * direction;
 
-    if (forwardLimit < dist)
-    {
+    if (forwardLimit < dist) {
         return false;
     }
 
@@ -81,12 +80,7 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
             if (pieces[i]->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
                 piecePos.second - (1 * direction))) {
-                if (pieces[i]->GetColor() == pieceColor) {
-                    return false;
-                }
-                else {
-                    return true;
-                }
+				return pieces[i]->GetColor() != pieceColor;
             }
         }
     }
@@ -98,12 +92,7 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
             if (pieces[i]->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
                 piecePos.second + (1 * direction))) {
-                if (pieces[i]->GetColor() == pieceColor) {
-                    return false;
-                }
-                else {
-                    return true;
-                }
+				return pieces[i]->GetColor() != pieceColor;
             }
         }
     }
