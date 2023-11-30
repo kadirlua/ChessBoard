@@ -62,23 +62,30 @@ std::vector<PiecePosition> Knight::PossibleMoves() const
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();
 
-    if(pos.first - 2 >= 0 && pos.second + 1 <= 7)
-        tmp.emplace_back(pos.first - 2 , pos.second + 1);
-    if(pos.first - 2 >= 0 && pos.second - 1 >= 0)
-        tmp.emplace_back(pos.first - 2 , pos.second - 1);
-    if(pos.first - 1 >= 0 && pos.second - 2 >= 0)
-        tmp.emplace_back(pos.first - 1 , pos.second - 2);
-    if(pos.first - 1 >= 0 && pos.second + 2 <= 7)
-        tmp.emplace_back(pos.first - 1 , pos.second + 2);
-    if(pos.first + 1 <= 7 && pos.second - 2 >= 0)
-        tmp.emplace_back(pos.first + 1 , pos.second - 2);
-    if(pos.first + 1 <= 7 && pos.second + 2 <= 7)
-        tmp.emplace_back(pos.first + 1 , pos.second + 2);
-    if(pos.first + 2 <= 7 && pos.second - 1 >= 0)
-        tmp.emplace_back(pos.first + 2 , pos.second - 1);
-    if(pos.first + 2 <= 7 && pos.second + 1 <= 7)
-        tmp.emplace_back(pos.first + 2 , pos.second + 1);
+    if (pos.first - 2 >= 0 && pos.second + 1 <= 7) {
+		tmp.emplace_back(pos.first - 2 , pos.second + 1);
+	}
+    if (pos.first - 2 >= 0 && pos.second - 1 >= 0) {
+		tmp.emplace_back(pos.first - 2 , pos.second - 1);
+	}
+    if (pos.first - 1 >= 0 && pos.second - 2 >= 0) {
+		tmp.emplace_back(pos.first - 1 , pos.second - 2);
+	}
+    if (pos.first - 1 >= 0 && pos.second + 2 <= 7) {
+		tmp.emplace_back(pos.first - 1 , pos.second + 2);
+	}
+    if (pos.first + 1 <= 7 && pos.second - 2 >= 0) {
+		tmp.emplace_back(pos.first + 1 , pos.second - 2);
+	}
+    if (pos.first + 1 <= 7 && pos.second + 2 <= 7) {
+		tmp.emplace_back(pos.first + 1 , pos.second + 2);
+	}
+    if (pos.first + 2 <= 7 && pos.second - 1 >= 0) {
+		tmp.emplace_back(pos.first + 2 , pos.second - 1);
+	}
+    if (pos.first + 2 <= 7 && pos.second + 1 <= 7) {
+		tmp.emplace_back(pos.first + 2 , pos.second + 1);
+	}
     std::sort(tmp.begin(), tmp.end());
-
     return tmp;
 }
