@@ -54,16 +54,15 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
 
     // moving forward
     if (pos.second == piecePos.second) {
-
-        for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->GetPosition() == piecePos) {
+        for (auto* piece : pieces) {
+            if (piece->GetPosition() == piecePos) {
                 continue;
             }
-            if (pieces[i]->GetPosition() ==
+            if (piece->GetPosition() ==
                 std::make_pair(piecePos.first + (1 * direction), piecePos.second)) {
                 return false;
             }
-            if (dist > 1 && pieces[i]->GetPosition() ==
+            if (dist > 1 && piece->GetPosition() ==
                 std::make_pair(piecePos.first + (2 * direction), piecePos.second)) {
                 return false;
             }
@@ -74,25 +73,25 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     if (pos == std::make_pair(piecePos.first + (1 * direction), piecePos.second - (1 * direction))) {
 
         // if the diagonal is full
-        for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->GetPosition() == piecePos) {
+        for (auto* piece : pieces) {
+            if (piece->GetPosition() == piecePos) {
                 continue;
             }
-            if (pieces[i]->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
+            if (piece->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
                 piecePos.second - (1 * direction))) {
-				return pieces[i]->GetColor() != pieceColor;
+				return piece->GetColor() != pieceColor;
             }
         }
     }
     else if (pos == std::make_pair(piecePos.first + (1 * direction), piecePos.second + (1 * direction))) {
         // if the diagonal is full
-        for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->GetPosition() == piecePos) {
+        for (auto* piece : pieces) {
+            if (piece->GetPosition() == piecePos) {
                 continue;
             }
-            if (pieces[i]->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
+            if (piece->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
                 piecePos.second + (1 * direction))) {
-				return pieces[i]->GetColor() != pieceColor;
+				return piece->GetColor() != pieceColor;
             }
         }
     }
