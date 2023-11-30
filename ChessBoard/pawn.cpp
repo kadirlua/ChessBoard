@@ -114,18 +114,20 @@ std::vector<PiecePosition> Pawn::PossibleMoves() const
 {
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();
-    if(GetColor() == Color::Black)
-    {
-        if(pos.first + 1 <= 7 && pos.second + 1 <= 7)
-            tmp.emplace_back(pos.first + 1 , pos.second + 1);
-        if(pos.first - 1 >= 0 && pos.second + 1 <= 7)
-            tmp.emplace_back(pos.first - 1 , pos.second + 1);
-    }
-    else{
-        if(pos.first + 1 <= 7 && pos.second -1 >= 0)
-            tmp.emplace_back(pos.first + 1, pos.second - 1);
-        if(pos.first - 1 >= 0 && pos.second - 1 >= 0)
-            tmp.emplace_back(pos.first - 1 , pos.second - 1);
+    if (GetColor() == Color::Black) {
+        if (pos.first + 1 <= 7 && pos.second + 1 <= 7) {
+			tmp.emplace_back(pos.first + 1 , pos.second + 1);
+		}
+        if (pos.first - 1 >= 0 && pos.second + 1 <= 7) {
+			tmp.emplace_back(pos.first - 1 , pos.second + 1);
+		}
+    } else {
+        if (pos.first + 1 <= 7 && pos.second -1 >= 0) {
+			tmp.emplace_back(pos.first + 1, pos.second - 1);
+		}
+        if (pos.first - 1 >= 0 && pos.second - 1 >= 0) {
+			tmp.emplace_back(pos.first - 1 , pos.second - 1);
+		}
     }
     std::sort(tmp.begin(), tmp.end());
     return tmp;
