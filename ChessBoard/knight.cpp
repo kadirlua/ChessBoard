@@ -32,25 +32,25 @@ bool Knight::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& p
     if (std::make_pair(piecePos.first - 2, piecePos.second - 1) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first - 2, piecePos.second + 1) == pos) {
+    if (std::make_pair(piecePos.first - 2, piecePos.second + 1) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first - 1, piecePos.second - 2) == pos) {
+    if (std::make_pair(piecePos.first - 1, piecePos.second - 2) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first - 1, piecePos.second + 2) == pos) {
+    if (std::make_pair(piecePos.first - 1, piecePos.second + 2) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first + 1, piecePos.second - 2) == pos) {
+    if (std::make_pair(piecePos.first + 1, piecePos.second - 2) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first + 1, piecePos.second + 2) == pos) {
+    if (std::make_pair(piecePos.first + 1, piecePos.second + 2) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first + 2, piecePos.second - 1) == pos) {
+    if (std::make_pair(piecePos.first + 2, piecePos.second - 1) == pos) {
         return true;
     }
-    else if (std::make_pair(piecePos.first + 2, piecePos.second + 1) == pos) {
+    if (std::make_pair(piecePos.first + 2, piecePos.second + 1) == pos) {
         return true;
     }
 
