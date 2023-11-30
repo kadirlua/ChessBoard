@@ -22,7 +22,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
 
     if (pos.first == piecePos.first) {
         // moves right/left
-
         for (size_t i = 0; i < pieces.size(); i++) {
             if (pieces[i]->GetPosition() == piecePos) {
                 continue;
@@ -30,7 +29,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
 
             if (pos.second < piecePos.second) {
                 // goes left:
-
                 if (pieces[i]->GetPosition().first == piecePos.first &&
 					pieces[i]->GetPosition().second < piecePos.second) {
                     
@@ -44,7 +42,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
             else {
                 // right move
-
                 if (pieces[i]->GetPosition().first == piecePos.first &&
 					pieces[i]->GetPosition().second > piecePos.second) {
                     
@@ -61,7 +58,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     }
     else if (pos.second == piecePos.second) {
         // moves up/down
-
         for (size_t i = 0; i < pieces.size(); i++) {
             if (pieces[i]->GetPosition() == piecePos) {
                 continue;
@@ -69,7 +65,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
 
             if (pos.first < piecePos.first) {
                 // moves up:
-
                 if (pieces[i]->GetPosition().first > pos.first
                     && pieces[i]->GetPosition().second == pos.second
                     && piecePos.first > pieces[i]->GetPosition().first) {
@@ -110,19 +105,19 @@ std::vector<PiecePosition> Rook::PossibleMoves() const
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();
 
-    for(int i = 1 ; i <= pos.second ; i++){
+    for (int i = 1; i <= pos.second; i++) {
         tmp.emplace_back(pos.first, pos.second - i);
     }
 
-    for(int i = 1 ; i <= 7 - pos.second ; i++){
+    for (int i = 1; i <= 7 - pos.second; i++) {
         tmp.emplace_back(pos.first, pos.second + i);
     }
 
-    for(int i = 1 ; i <= pos.first ; i++){
+    for (int i = 1; i <= pos.first; i++) {
         tmp.emplace_back(pos.first - i, pos.second );
     }
 
-    for(int i = 1 ; i <= 7 - pos.first ; i++){
+    for (int i = 1; i <= 7 - pos.first; i++) {
         tmp.emplace_back(pos.first + i, pos.second);
     }
     std::sort(tmp.begin(), tmp.end());
