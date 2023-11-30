@@ -31,30 +31,23 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
                 // goes left:
                 if (piece->GetPosition().first == piecePos.first &&
 					piece->GetPosition().second < piecePos.second) {
-                    
                     if (pos.second < piece->GetPosition().second) {
                         // there is a piece
                         return false;
                     }
-
                 }
-
             }
             else {
                 // right move
                 if (piece->GetPosition().first == piecePos.first &&
 					piece->GetPosition().second > piecePos.second) {
-                    
                     if (pos.second > piece->GetPosition().second) {
                         // there is a piece
                         return false;
                     }
-
                 }
-
             }
         }
-
     }
     else if (pos.second == piecePos.second) {
         // moves up/down
@@ -62,7 +55,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             if (piece->GetPosition() == piecePos) {
                 continue;
             }
-
             if (pos.first < piecePos.first) {
                 // moves up:
                 if (piece->GetPosition().first > pos.first
@@ -74,7 +66,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
             else {
                 // moves down
-
                 if (piece->GetPosition().first < pos.first
                     && piece->GetPosition().first > piecePos.first
                     && pos.second == piece->GetPosition().second) {
@@ -96,7 +87,6 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
         }
     }
-
     return true;
 }
 
