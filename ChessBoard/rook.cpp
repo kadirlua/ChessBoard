@@ -16,7 +16,7 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     }
 
     // check left, right, up, down positions
-    if (!(pos.first == piecePos.first || pos.second == piecePos.second)) {
+    if (pos.first != piecePos.first && pos.second != piecePos.second) {
         return false;
     }
 
