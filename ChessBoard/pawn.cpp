@@ -46,8 +46,7 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
         forwardLimit = 2;
     }
 
-    int dist = (pos.first - piecePos.first) * direction;
-
+    const int dist = (pos.first - piecePos.first) * direction;
     if (forwardLimit < dist) {
         return false;
     }
