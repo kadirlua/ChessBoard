@@ -33,10 +33,9 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     }
 
     if ((pos != std::make_pair(piecePos.first + (1 * direction), piecePos.second))
-        && !((pos == std::make_pair(piecePos.first + (2 * direction), piecePos.second)) && piecePos.first == startPoint)
+        && (!(pos == std::make_pair(piecePos.first + (2 * direction), piecePos.second)) || piecePos.first != startPoint)
         && (pos != std::make_pair(piecePos.first + (1 * direction), piecePos.second - (1 * direction)))
-        && (pos != std::make_pair(piecePos.first + (1 * direction), piecePos.second + (1 * direction))))
-    {
+        && (pos != std::make_pair(piecePos.first + (1 * direction), piecePos.second + (1 * direction)))) {
         return false;
     }
 
