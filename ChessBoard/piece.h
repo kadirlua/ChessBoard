@@ -17,6 +17,7 @@ using PiecePosition = std::pair<int, int>;
 class Piece {
 public:
     explicit Piece(Color, int row, int col, double);   // constructor
+	virtual ~Piece() = default;
 
     //  get piece position in x and y coordinates
     PiecePosition get_position() const {
