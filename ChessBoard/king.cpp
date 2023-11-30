@@ -69,12 +69,7 @@ bool King::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
         }
     }
-
-    if (isClosertoKing(pieces, pos)) {
-        return false;
-    }
-
-    return true;
+    return isClosertoKing(pieces, pos);
 }
 
 std::vector<PiecePosition> King::PossibleMoves() const
