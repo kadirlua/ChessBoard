@@ -105,7 +105,7 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     return true;
 }
 
-std::vector<PiecePosition> Rook::PossibleMoves()
+std::vector<PiecePosition> Rook::PossibleMoves() const
 {
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();

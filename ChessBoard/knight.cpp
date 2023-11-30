@@ -57,7 +57,7 @@ bool Knight::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& p
     return false;
 }
 
-std::vector<PiecePosition> Knight::PossibleMoves()
+std::vector<PiecePosition> Knight::PossibleMoves() const
 {
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();

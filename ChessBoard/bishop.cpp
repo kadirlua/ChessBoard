@@ -92,7 +92,7 @@ bool Bishop::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& p
     return true;
 }
 
-std::vector<PiecePosition> Bishop::PossibleMoves()
+std::vector<PiecePosition> Bishop::PossibleMoves() const
 {
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();

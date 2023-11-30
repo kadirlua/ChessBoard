@@ -17,7 +17,7 @@ bool Queen::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& po
         || Bishop{ pieceColor, piecePos.first, piecePos.second }.CheckPath(pieces, pos);
 }
 
-std::vector<PiecePosition> Queen::PossibleMoves()
+std::vector<PiecePosition> Queen::PossibleMoves() const
 {
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();

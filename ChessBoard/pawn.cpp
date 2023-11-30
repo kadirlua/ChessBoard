@@ -110,7 +110,7 @@ bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     return true;
 }
 
-std::vector<PiecePosition> Pawn::PossibleMoves()
+std::vector<PiecePosition> Pawn::PossibleMoves() const
 {
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();

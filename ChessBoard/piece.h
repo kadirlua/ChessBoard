@@ -45,7 +45,7 @@ public:
         const PiecePosition& pos) const = 0;
 
     //  possible moves for a piece
-    virtual std::vector<PiecePosition> PossibleMoves() = 0;
+    virtual std::vector<PiecePosition> PossibleMoves() const = 0;
 private:
     Color m_color;  // piece color
     PiecePosition m_position;   // piece position in x and y coordinates
