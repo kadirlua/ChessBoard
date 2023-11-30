@@ -97,18 +97,22 @@ std::vector<PiecePosition> Bishop::PossibleMoves() const
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();
 
-    for(int i = 1 ; i <= pos.first ; i++){
-        if(pos.first - i >= 0 && pos.second - i >= 0)
-            tmp.emplace_back(pos.first - i, pos.second - i);
-        if(pos.first - i >= 0 && pos.second + i <= 7)
-            tmp.emplace_back(pos.first - i, pos.second + i);
+    for (int i = 1 ; i <= pos.first ; i++) {
+        if (pos.first - i >= 0 && pos.second - i >= 0) {
+			tmp.emplace_back(pos.first - i, pos.second - i);
+		}
+        if (pos.first - i >= 0 && pos.second + i <= 7) {
+			tmp.emplace_back(pos.first - i, pos.second + i);
+		}
     }
 
-    for(int i = 1 ; i <= 7 - pos.first ; i++){
-        if(pos.first + i <= 7 && pos.second + i <= 7)
-            tmp.emplace_back(pos.first + i, pos.second + i);
-        if(pos.first + i <= 7 && pos.second - i >= 0)
-            tmp.emplace_back(pos.first + i, pos.second - i);
+    for (int i = 1 ; i <= 7 - pos.first ; i++){
+        if (pos.first + i <= 7 && pos.second + i <= 7) {
+			tmp.emplace_back(pos.first + i, pos.second + i);
+		}
+        if (pos.first + i <= 7 && pos.second - i >= 0) {
+			tmp.emplace_back(pos.first + i, pos.second - i);
+		}
     }
     std::sort(tmp.begin(), tmp.end());
     return tmp;
