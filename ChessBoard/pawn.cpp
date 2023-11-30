@@ -6,10 +6,10 @@ Pawn::Pawn(Color color, int row, int col) noexcept :
 { 
 }
 
-bool Pawn::check_path(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
+bool Pawn::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
 {
-    auto piecePos = get_position();
-    auto pieceColor = get_color();
+    auto piecePos = GetPosition();
+    auto pieceColor = GetColor();
 
     // if the same position, return false
     if (piecePos == pos)
@@ -57,14 +57,14 @@ bool Pawn::check_path(const std::vector<Piece*>& pieces, const PiecePosition& po
     if (pos.second == piecePos.second) {
 
         for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->get_position() == piecePos) {
+            if (pieces[i]->GetPosition() == piecePos) {
                 continue;
             }
-            if (pieces[i]->get_position() ==
+            if (pieces[i]->GetPosition() ==
                 std::make_pair(piecePos.first + (1 * direction), piecePos.second)) {
                 return false;
             }
-            if (dist > 1 && pieces[i]->get_position() ==
+            if (dist > 1 && pieces[i]->GetPosition() ==
                 std::make_pair(piecePos.first + (2 * direction), piecePos.second)) {
                 return false;
             }
@@ -76,12 +76,12 @@ bool Pawn::check_path(const std::vector<Piece*>& pieces, const PiecePosition& po
 
         // if the diagonal is full
         for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->get_position() == piecePos) {
+            if (pieces[i]->GetPosition() == piecePos) {
                 continue;
             }
-            if (pieces[i]->get_position() == std::make_pair(piecePos.first + (1 * direction), 
+            if (pieces[i]->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
                 piecePos.second - (1 * direction))) {
-                if (pieces[i]->get_color() == pieceColor) {
+                if (pieces[i]->GetColor() == pieceColor) {
                     return false;
                 }
                 else {
@@ -93,12 +93,12 @@ bool Pawn::check_path(const std::vector<Piece*>& pieces, const PiecePosition& po
     else if (pos == std::make_pair(piecePos.first + (1 * direction), piecePos.second + (1 * direction))) {
         // if the diagonal is full
         for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->get_position() == piecePos) {
+            if (pieces[i]->GetPosition() == piecePos) {
                 continue;
             }
-            if (pieces[i]->get_position() == std::make_pair(piecePos.first + (1 * direction), 
+            if (pieces[i]->GetPosition() == std::make_pair(piecePos.first + (1 * direction),
                 piecePos.second + (1 * direction))) {
-                if (pieces[i]->get_color() == pieceColor) {
+                if (pieces[i]->GetColor() == pieceColor) {
                     return false;
                 }
                 else {
@@ -110,11 +110,11 @@ bool Pawn::check_path(const std::vector<Piece*>& pieces, const PiecePosition& po
     return true;
 }
 
-std::vector<PiecePosition> Pawn::possible_moves()
+std::vector<PiecePosition> Pawn::PossibleMoves()
 {
     std::vector<PiecePosition> tmp;
-    auto pos = get_position();
-    if(get_color() == Color::Black)
+    auto pos = GetPosition();
+    if(GetColor() == Color::Black)
     {
         if(pos.first + 1 <= 7 && pos.second + 1 <= 7)
             tmp.emplace_back(pos.first + 1 , pos.second + 1);

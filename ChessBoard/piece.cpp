@@ -7,12 +7,12 @@ Piece::Piece(Color color , int row, int col, double point) :
 {
 }
 
-void Piece::set_position(PiecePosition pos)
+void Piece::SetPosition(PiecePosition pos)
 {
     m_position = pos;
 }
 
-void Piece::set_color(Color color)
+void Piece::SetColor(Color color)
 {
     m_color = color;
 }

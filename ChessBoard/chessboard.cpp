@@ -34,31 +34,31 @@ double ChessBoard::calculate_white_points() const
 
     std::copy_if(m_pieces.begin(), m_pieces.end(), std::back_inserter(white_pieces),
         [](const Piece* piece) {
-            return piece->get_color() == Color::White;
+            return piece->GetColor() == Color::White;
         });
 
     std::copy_if(m_pieces.begin(), m_pieces.end(), std::back_inserter(black_pieces),
         [](const Piece* piece) {
-            return piece->get_color() == Color::Black;
+            return piece->GetColor() == Color::Black;
         });
 
     for (const auto& elem : white_pieces)
     {
         bool isinDanger{};
 
-        auto whitePos = elem->get_position();
+        auto whitePos = elem->GetPosition();
 
         for (const auto& blackPiece : black_pieces)
         {
-            auto blackPos = blackPiece->get_position();
-            auto blackPossibleMoves = blackPiece->possible_moves();
+            auto blackPos = blackPiece->GetPosition();
+            auto blackPossibleMoves = blackPiece->PossibleMoves();
 
             auto found = std::find(blackPossibleMoves.cbegin(), blackPossibleMoves.cend(), whitePos);
 
             if (found != blackPossibleMoves.cend())
             {
                 // check if it is in danger
-                if (blackPiece->check_path(m_pieces, whitePos))
+                if (blackPiece->CheckPath(m_pieces, whitePos))
                 {
                     isinDanger = true;
                     break;
@@ -67,9 +67,9 @@ double ChessBoard::calculate_white_points() const
         }
 
         if (isinDanger)
-            total += elem->get_point() / 2;
+            total += elem->GetPoint() / 2;
         else
-            total += elem->get_point();
+            total += elem->GetPoint();
     }
     return total;
 }
@@ -82,31 +82,31 @@ double ChessBoard::calculate_black_points() const
 
     std::copy_if(m_pieces.begin(), m_pieces.end(), std::back_inserter(white_pieces), 
         [](const Piece* piece) {
-            return piece->get_color() == Color::White;
+            return piece->GetColor() == Color::White;
         });
 
     std::copy_if(m_pieces.begin(), m_pieces.end(), std::back_inserter(black_pieces), 
         [](const Piece* piece) {
-            return piece->get_color() == Color::Black;
+            return piece->GetColor() == Color::Black;
         });
 
     for (const auto& elem : black_pieces) 
     {
         bool isinDanger{};
 
-        auto blackPos = elem->get_position();
+        auto blackPos = elem->GetPosition();
 
         for (const auto& whitePiece : white_pieces)
         {
-            auto whitePos = whitePiece->get_position();
-            auto whitePossibleMoves = whitePiece->possible_moves();
+            auto whitePos = whitePiece->GetPosition();
+            auto whitePossibleMoves = whitePiece->PossibleMoves();
 
             auto found = std::find(whitePossibleMoves.cbegin(), whitePossibleMoves.cend(), blackPos);
 
             if (found != whitePossibleMoves.cend())
             {
                 // check if it is in danger
-                if (whitePiece->check_path(m_pieces, blackPos))
+                if (whitePiece->CheckPath(m_pieces, blackPos))
                 {
                     isinDanger = true;
                     break;
@@ -115,9 +115,9 @@ double ChessBoard::calculate_black_points() const
         }
 
         if (isinDanger)
-            total += elem->get_point() / 2;
+            total += elem->GetPoint() / 2;
         else
-            total += elem->get_point();
+            total += elem->GetPoint();
     }
     return total;
 }

@@ -8,19 +8,19 @@ Queen::Queen(Color color, int row, int col) noexcept :
 { 
 }
 
-bool Queen::check_path(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
+bool Queen::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
 {
-    auto piecePos = get_position();
-    auto pieceColor = get_color();
+    auto piecePos = GetPosition();
+    auto pieceColor = GetColor();
 
-    return Rook{ pieceColor, piecePos.first, piecePos.second }.check_path(pieces, pos)
-        || Bishop{ pieceColor, piecePos.first, piecePos.second }.check_path(pieces, pos);
+    return Rook{ pieceColor, piecePos.first, piecePos.second }.CheckPath(pieces, pos)
+        || Bishop{ pieceColor, piecePos.first, piecePos.second }.CheckPath(pieces, pos);
 }
 
-std::vector<PiecePosition> Queen::possible_moves()
+std::vector<PiecePosition> Queen::PossibleMoves()
 {
     std::vector<PiecePosition> tmp;
-    auto pos = get_position();
+    auto pos = GetPosition();
 
     for(int i = 1 ; i <= pos.first ; i++){
         if(pos.first - i >= 0 && pos.second - i >= 0)

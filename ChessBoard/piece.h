@@ -20,32 +20,32 @@ public:
 	virtual ~Piece() = default;
 
     //  get piece position in x and y coordinates
-    PiecePosition get_position() const {
+    PiecePosition GetPosition() const {
         return m_position;
     }
 
     //  set piece position
-    void set_position(PiecePosition);
+    void SetPosition(PiecePosition pos);
 
     //  get piece color white or black
-    Color get_color() const {
+    Color GetColor() const {
         return m_color;
     }
 
     //  set piece color
-    void set_color(Color);
+    void SetColor(Color color);
 
     //  get piece point
-    double get_point() const {
+    double GetPoint() const {
         return m_point;
     }
 
     //  check a piece for destination path which is in danger or not
-    virtual bool check_path(const std::vector<Piece*>& pieces, 
+    virtual bool CheckPath(const std::vector<Piece*>& pieces,
         const PiecePosition& path) const = 0;
 
     //  possible moves for a piece
-    virtual std::vector<PiecePosition> possible_moves() = 0;
+    virtual std::vector<PiecePosition> PossibleMoves() = 0;
 private:
     Color m_color;  // piece color
     PiecePosition m_position;   // piece position in x and y coordinates

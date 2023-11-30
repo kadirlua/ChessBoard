@@ -17,11 +17,11 @@ double King::distance(const PiecePosition& path1, const PiecePosition& path2) co
 
 bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition& pos) const noexcept
 {
-    auto piecePos = get_position();
+    auto piecePos = GetPosition();
 
     for (size_t i = 0; i < pieces.size(); i++) {
         // the piece is our piece?
-        if (pieces[i]->get_position() == piecePos) {
+        if (pieces[i]->GetPosition() == piecePos) {
             continue;
         }
 
@@ -29,7 +29,7 @@ bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition
             // row :
             for (int b = -1; b < 2; b++) {
                 // column :
-                if (pieces[i]->get_position() == std::make_pair(pos.first + a, pos.second + b)) {
+                if (pieces[i]->GetPosition() == std::make_pair(pos.first + a, pos.second + b)) {
                     //  check if it's a king instance
                     if (dynamic_cast<King*>(pieces[i]) != nullptr) {
                         return true;
@@ -43,10 +43,10 @@ bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition
     return false;
 }
 
-bool King::check_path(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
+bool King::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
 {
-    auto piecePos = get_position();
-    auto pieceColor = get_color();
+    auto piecePos = GetPosition();
+    auto pieceColor = GetColor();
 
     // if the same position, return false
     if (piecePos == pos) {
@@ -60,11 +60,11 @@ bool King::check_path(const std::vector<Piece*>& pieces, const PiecePosition& po
 
     // if there is the same team in destination, return false
     for (size_t k = 0; k < pieces.size(); k++) {
-        if (pieces[k]->get_position() == piecePos) {
+        if (pieces[k]->GetPosition() == piecePos) {
             continue;
         }
-        if (pieces[k]->get_position() == pos) {
-            if (pieceColor == pieces[k]->get_color()) {
+        if (pieces[k]->GetPosition() == pos) {
+            if (pieceColor == pieces[k]->GetColor()) {
                 return false;
             }
         }
@@ -77,10 +77,10 @@ bool King::check_path(const std::vector<Piece*>& pieces, const PiecePosition& po
     return true;
 }
 
-std::vector<PiecePosition> King::possible_moves()
+std::vector<PiecePosition> King::PossibleMoves()
 {
     std::vector<PiecePosition> tmp;
-    auto pos = get_position();
+    auto pos = GetPosition();
 
     if(pos.first - 1 >= 0 && pos.second - 1 >= 0)
         tmp.emplace_back(pos.first - 1 , pos.second - 1);

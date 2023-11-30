@@ -6,10 +6,10 @@ Bishop::Bishop(Color color, int row, int col) noexcept :
 {
 }
 
-bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
+bool Bishop::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
 {
-    auto piecePos = get_position();
-    auto pieceColor = get_color();
+    auto piecePos = GetPosition();
+    auto pieceColor = GetColor();
 
     // if the same position, return false
     if (piecePos == pos) {
@@ -18,11 +18,11 @@ bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
 
     // check if there is a piece in destination :
     for (auto* piece : pieces) {
-        if (piece->get_position() == piecePos) {
+        if (piece->GetPosition() == piecePos) {
             continue;
         }
-        if (piece->get_position() == pos) {
-            if (piece->get_color() == pieceColor) {
+        if (piece->GetPosition() == pos) {
+            if (piece->GetColor() == pieceColor) {
                 return false;
             }
         }
@@ -37,7 +37,7 @@ bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
             }
             for (int i = piecePos.first - 1, j = piecePos.second - 1; i > pos.first; i--, j--) {
                 for (auto* piece : pieces) {
-                    if (piece->get_position() == std::make_pair(i, j)) {
+                    if (piece->GetPosition() == std::make_pair(i, j)) {
                         return false;
                     }
                 }
@@ -50,7 +50,7 @@ bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
             }
             for (int i = piecePos.first - 1, j = piecePos.second + 1; i > pos.first; i--, j++) {
                 for (auto* piece : pieces) {
-                    if (piece->get_position() == std::make_pair(i, j)) {
+                    if (piece->GetPosition() == std::make_pair(i, j)) {
                         return false;
                     }
                 }
@@ -68,7 +68,7 @@ bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
 
             for (int i = piecePos.first + 1, j = piecePos.second - 1; i < pos.first; i++, j--) {
                 for (auto* piece : pieces) {
-                    if (piece->get_position() == std::make_pair(i, j)) {
+                    if (piece->GetPosition() == std::make_pair(i, j)) {
                         return false;
                     }
                 }
@@ -81,7 +81,7 @@ bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
             }
             for (int i = piecePos.first + 1, j = piecePos.second + 1; i < pos.first; i++, j++) {
                 for (auto* piece : pieces) {
-                    if (piece->get_position() == std::make_pair(i, j)) {
+                    if (piece->GetPosition() == std::make_pair(i, j)) {
                         return false;
                     }
                 }
@@ -92,10 +92,10 @@ bool Bishop::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
     return true;
 }
 
-std::vector<PiecePosition> Bishop::possible_moves()
+std::vector<PiecePosition> Bishop::PossibleMoves()
 {
     std::vector<PiecePosition> tmp;
-    auto pos = get_position();
+    auto pos = GetPosition();
 
     for(int i = 1 ; i <= pos.first ; i++){
         if(pos.first - i >= 0 && pos.second - i >= 0)

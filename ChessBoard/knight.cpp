@@ -6,18 +6,18 @@ Knight::Knight(Color color, int row, int col) noexcept :
 {
 }
 
-bool Knight::check_path(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
+bool Knight::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos) const
 {
-    auto piecePos = get_position();
-    auto pieceColor = get_color();
+    auto piecePos = GetPosition();
+    auto pieceColor = GetColor();
 
     // is there a piece in destination?
     for (size_t i = 0; i < pieces.size(); i++) {
-        if (pieces[i]->get_position() == piecePos) {
+        if (pieces[i]->GetPosition() == piecePos) {
             continue;
         }
-        if (pieces[i]->get_position() == pos) {
-            if (pieces[i]->get_color() == pieceColor) {
+        if (pieces[i]->GetPosition() == pos) {
+            if (pieces[i]->GetColor() == pieceColor) {
                 return false;
             }
         }
@@ -57,10 +57,10 @@ bool Knight::check_path(const std::vector<Piece*>& pieces, const PiecePosition& 
     return false;
 }
 
-std::vector<PiecePosition> Knight::possible_moves()
+std::vector<PiecePosition> Knight::PossibleMoves()
 {
     std::vector<PiecePosition> tmp;
-    auto pos = get_position();
+    auto pos = GetPosition();
 
     if(pos.first - 2 >= 0 && pos.second + 1 <= 7)
         tmp.emplace_back(pos.first - 2 , pos.second + 1);
