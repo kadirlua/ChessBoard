@@ -42,7 +42,7 @@ public:
 
     //  check a piece for destination path which is in danger or not
     virtual bool CheckPath(const std::vector<Piece*>& pieces,
-        const PiecePosition& path) const = 0;
+        const PiecePosition& pos) const = 0;
 
     //  possible moves for a piece
     virtual std::vector<PiecePosition> PossibleMoves() = 0;

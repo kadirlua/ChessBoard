@@ -9,7 +9,7 @@ public:
     Bishop(Color, int row, int col) noexcept;
     std::vector<PiecePosition> PossibleMoves() override;
     bool CheckPath(const std::vector<Piece*>& pieces,
-        const PiecePosition& path) const override;
+        const PiecePosition& pos) const override;
 private:
 };
 
