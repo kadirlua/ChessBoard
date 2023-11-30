@@ -19,9 +19,9 @@ bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition
 {
     auto piecePos = GetPosition();
 
-    for (size_t i = 0; i < pieces.size(); i++) {
+    for (auto* piece : pieces) {
         // the piece is our piece?
-        if (pieces[i]->GetPosition() == piecePos) {
+        if (piece->GetPosition() == piecePos) {
             continue;
         }
 
@@ -29,9 +29,9 @@ bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition
             // row :
             for (int b = -1; b < 2; b++) {
                 // column :
-                if (pieces[i]->GetPosition() == std::make_pair(pos.first + a, pos.second + b)) {
+                if (piece->GetPosition() == std::make_pair(pos.first + a, pos.second + b)) {
                     //  check if it's a king instance
-                    if (dynamic_cast<King*>(pieces[i]) != nullptr) {
+                    if (dynamic_cast<King*>(piece) != nullptr) {
                         return true;
                     }
                 }
@@ -59,12 +59,12 @@ bool King::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     }
 
     // if there is the same team in destination, return false
-    for (size_t k = 0; k < pieces.size(); k++) {
-        if (pieces[k]->GetPosition() == piecePos) {
+    for (auto* piece : pieces) {
+        if (piece->GetPosition() == piecePos) {
             continue;
         }
-        if (pieces[k]->GetPosition() == pos) {
-            if (pieceColor == pieces[k]->GetColor()) {
+        if (piece->GetPosition() == pos) {
+            if (pieceColor == piece->GetColor()) {
                 return false;
             }
         }

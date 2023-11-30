@@ -12,12 +12,12 @@ bool Knight::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& p
     auto pieceColor = GetColor();
 
     // is there a piece in destination?
-    for (size_t i = 0; i < pieces.size(); i++) {
-        if (pieces[i]->GetPosition() == piecePos) {
+    for (auto* piece : pieces) {
+        if (piece->GetPosition() == piecePos) {
             continue;
         }
-        if (pieces[i]->GetPosition() == pos) {
-            if (pieces[i]->GetColor() == pieceColor) {
+        if (piece->GetPosition() == pos) {
+            if (piece->GetColor() == pieceColor) {
                 return false;
             }
         }

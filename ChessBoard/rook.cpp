@@ -22,17 +22,17 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
 
     if (pos.first == piecePos.first) {
         // moves right/left
-        for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->GetPosition() == piecePos) {
+        for (auto* piece : pieces) {
+            if (piece->GetPosition() == piecePos) {
                 continue;
             }
 
             if (pos.second < piecePos.second) {
                 // goes left:
-                if (pieces[i]->GetPosition().first == piecePos.first &&
-					pieces[i]->GetPosition().second < piecePos.second) {
+                if (piece->GetPosition().first == piecePos.first &&
+					piece->GetPosition().second < piecePos.second) {
                     
-                    if (pos.second < pieces[i]->GetPosition().second) {
+                    if (pos.second < piece->GetPosition().second) {
                         // there is a piece
                         return false;
                     }
@@ -42,10 +42,10 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             }
             else {
                 // right move
-                if (pieces[i]->GetPosition().first == piecePos.first &&
-					pieces[i]->GetPosition().second > piecePos.second) {
+                if (piece->GetPosition().first == piecePos.first &&
+					piece->GetPosition().second > piecePos.second) {
                     
-                    if (pos.second > pieces[i]->GetPosition().second) {
+                    if (pos.second > piece->GetPosition().second) {
                         // there is a piece
                         return false;
                     }
@@ -58,16 +58,16 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     }
     else if (pos.second == piecePos.second) {
         // moves up/down
-        for (size_t i = 0; i < pieces.size(); i++) {
-            if (pieces[i]->GetPosition() == piecePos) {
+        for (auto* piece : pieces) {
+            if (piece->GetPosition() == piecePos) {
                 continue;
             }
 
             if (pos.first < piecePos.first) {
                 // moves up:
-                if (pieces[i]->GetPosition().first > pos.first
-                    && pieces[i]->GetPosition().second == pos.second
-                    && piecePos.first > pieces[i]->GetPosition().first) {
+                if (piece->GetPosition().first > pos.first
+                    && piece->GetPosition().second == pos.second
+                    && piecePos.first > piece->GetPosition().first) {
                     // there is a piece
                     return false;
                 }
@@ -75,9 +75,9 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
             else {
                 // moves down
 
-                if (pieces[i]->GetPosition().first < pos.first
-                    && pieces[i]->GetPosition().first > piecePos.first
-                    && pos.second == pieces[i]->GetPosition().second) {
+                if (piece->GetPosition().first < pos.first
+                    && piece->GetPosition().first > piecePos.first
+                    && pos.second == piece->GetPosition().second) {
                     // there is a piece
                     return false;
                 }
@@ -86,12 +86,12 @@ bool Rook::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
     }
 
     // if there is the same team in destination, return false
-    for (size_t k = 0; k < pieces.size(); k++) {
-        if (pieces[k]->GetPosition() == piecePos) {
+    for (auto* piece : pieces) {
+        if (piece->GetPosition() == piecePos) {
             continue;
         }
-        if (pieces[k]->GetPosition() == pos) {
-            if (pieceColor == pieces[k]->GetColor()) {
+        if (piece->GetPosition() == pos) {
+            if (pieceColor == piece->GetColor()) {
                 return false;
             }
         }
