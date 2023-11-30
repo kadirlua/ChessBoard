@@ -22,35 +22,37 @@ std::vector<PiecePosition> Queen::PossibleMoves() const
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();
 
-    for(int i = 1 ; i <= pos.first ; i++){
-        if(pos.first - i >= 0 && pos.second - i >= 0)
-            tmp.emplace_back(pos.first - i, pos.second - i);
-        if(pos.first - i >= 0 && pos.second + i <= 7)
-            tmp.emplace_back(pos.first - i, pos.second + i);
-
+    for (int i = 1 ; i <= pos.first ; i++) {
+        if (pos.first - i >= 0 && pos.second - i >= 0) {
+			tmp.emplace_back(pos.first - i, pos.second - i);
+		}
+        if (pos.first - i >= 0 && pos.second + i <= 7) {
+			tmp.emplace_back(pos.first - i, pos.second + i);
+		}
     }
 
-    for(int i = 1 ; i <= 7 - pos.first ; i++){
-        if(pos.first + i <= 7 && pos.second + i <= 7)
-            tmp.emplace_back(pos.first + i, pos.second + i);
-        if(pos.first + i <= 7 && pos.second - i >= 0)
-            tmp.emplace_back(pos.first + i, pos.second - i);
-
+    for (int i = 1 ; i <= 7 - pos.first ; i++) {
+        if (pos.first + i <= 7 && pos.second + i <= 7) {
+			tmp.emplace_back(pos.first + i, pos.second + i);
+		}
+        if (pos.first + i <= 7 && pos.second - i >= 0) {
+			tmp.emplace_back(pos.first + i, pos.second - i);
+		}
     }
 
-    for(int i = 1 ; i <= pos.second ; i++){
+    for (int i = 1 ; i <= pos.second ; i++) {
         tmp.emplace_back(pos.first, pos.second - i);
     }
 
-    for(int i = 1 ; i <= 7 - pos.second ; i++){
+    for (int i = 1 ; i <= 7 - pos.second ; i++) {
         tmp.emplace_back(pos.first, pos.second + i);
     }
 
-    for(int i = 1 ; i <= pos.first ; i++){
+    for (int i = 1 ; i <= pos.first ; i++) {
         tmp.emplace_back(pos.first - i, pos.second );
     }
 
-    for(int i = 1 ; i <= 7 - pos.first ; i++){
+    for (int i = 1 ; i <= 7 - pos.first ; i++) {
         tmp.emplace_back(pos.first + i, pos.second);
     }
     std::sort(tmp.begin(), tmp.end());
