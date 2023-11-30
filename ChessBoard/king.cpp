@@ -7,12 +7,12 @@ King::King(Color color, int row, int col) noexcept :
 }
 
 // calculate between two paths
-double King::distance(const PiecePosition& path1, const PiecePosition& path2) const noexcept 
+double King::Distance(const PiecePosition& path1, const PiecePosition& path2) const noexcept
 {
-    double sonuc = (double)(((path2.first - path1.first) * (path2.first - path1.first)) +
+    double result = (double)(((path2.first - path1.first) * (path2.first - path1.first)) +
         ((path2.second - path1.second) * (path2.second - path1.second)));
 
-    return sonuc;
+    return result;
 }
 
 bool King::isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition& pos) const noexcept
@@ -53,8 +53,8 @@ bool King::CheckPath(const std::vector<Piece*>& pieces, const PiecePosition& pos
         return false;
     }
 
-    //  check the distance
-    if (distance(piecePos, pos) > 2) {
+    //  check the Distance
+    if (Distance(piecePos, pos) > 2) {
         return false;
     }
 
@@ -82,24 +82,32 @@ std::vector<PiecePosition> King::PossibleMoves() const
     std::vector<PiecePosition> tmp;
     auto pos = GetPosition();
 
-    if(pos.first - 1 >= 0 && pos.second - 1 >= 0)
-        tmp.emplace_back(pos.first - 1 , pos.second - 1);
-    if(pos.first - 1 >= 0 )
-        tmp.emplace_back(pos.first - 1 , pos.second);
-    if(pos.first - 1 >= 0 && pos.second + 1 <= 7)
-        tmp.emplace_back(pos.first - 1 , pos.second + 1);
+    if (pos.first - 1 >= 0 && pos.second - 1 >= 0) {
+		tmp.emplace_back(pos.first - 1 , pos.second - 1);
+	}
+    if (pos.first - 1 >= 0) {
+		tmp.emplace_back(pos.first - 1 , pos.second);
+	}
+    if (pos.first - 1 >= 0 && pos.second + 1 <= 7) {
+		tmp.emplace_back(pos.first - 1 , pos.second + 1);
+	}
 
-    if( pos.second + 1 <= 7)
-        tmp.emplace_back(pos.first , pos.second + 1);
-    if( pos.second - 1 >= 0)
-        tmp.emplace_back(pos.first , pos.second - 1);
+    if (pos.second + 1 <= 7) {
+		tmp.emplace_back(pos.first , pos.second + 1);
+	}
+    if (pos.second - 1 >= 0) {
+		tmp.emplace_back(pos.first , pos.second - 1);
+	}
 
-    if(pos.first + 1 <= 7 && pos.second - 1 >= 0)
-        tmp.emplace_back(pos.first + 1 , pos.second - 1);
-    if(pos.first + 1 <= 7 )
-        tmp.emplace_back(pos.first + 1 , pos.second);
-    if(pos.first + 1 <= 7 && pos.second + 1 <= 7)
-        tmp.emplace_back(pos.first + 1 , pos.second + 1);
+    if (pos.first + 1 <= 7 && pos.second - 1 >= 0) {
+		tmp.emplace_back(pos.first + 1 , pos.second - 1);
+	}
+    if (pos.first + 1 <= 7) {
+		tmp.emplace_back(pos.first + 1 , pos.second);
+	}
+    if (pos.first + 1 <= 7 && pos.second + 1 <= 7) {
+		tmp.emplace_back(pos.first + 1 , pos.second + 1);
+	}
     std::sort(tmp.begin(), tmp.end());
     return tmp;
 }
