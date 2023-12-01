@@ -15,12 +15,12 @@ int main()
         filename.append(".txt");
 
         ChessBoard chess;    // create an instance of a chess object
-        chess.read_from_file(filename);   //load chess board from the file
-        chess.load_board();  // create pieces
+		chess.ReadFromFile(filename);   //load chess board from the file
+		chess.LoadBoard();  // create pieces
 
         // print contents
-        std::cout << filename << " black points: " << chess.calculate_black_points() << "\t";
-        std::cout << " white points: " << chess.calculate_white_points() << "\n";
+        std::cout << filename << " black points: " << chess.CalculateBlackPoints() << "\t";
+        std::cout << " white points: " << chess.CalculateWhitePoints() << "\n";
     }
 
     return 0;

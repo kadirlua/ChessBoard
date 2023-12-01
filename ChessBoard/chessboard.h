@@ -11,16 +11,16 @@ public:
 	ChessBoard() = default;	// default constructor
 	virtual ~ChessBoard();	// destructor
 	// load from file
-	void read_from_file(const std::string&);
+	void ReadFromFile(const std::string& fileName);
 	// create pieces for chess board
-	void load_board();
+	void LoadBoard();
 
 	// return total white points
-	double calculate_white_points() const;
+	double CalculateWhitePoints() const;
 	// return total black points
-	double calculate_black_points() const;
+	double CalculateBlackPoints() const;
 private:
-	std::vector<std::string> piecePositions;
+	std::vector<std::string> m_piecePositions;
 	std::vector<Piece*> m_pieces;
 };
 

@@ -17,16 +17,16 @@ ChessBoard::~ChessBoard() {
         delete elem;
 }
 
-void ChessBoard::read_from_file(const std::string& fileName) {
+void ChessBoard::ReadFromFile(const std::string& fileName) {
     std::ifstream fileStream;
     std::string lines;
 
     fileStream.open(fileName);
     while (fileStream >> lines)
-        piecePositions.push_back(lines);
+		m_piecePositions.push_back(lines);
 }
 
-double ChessBoard::calculate_white_points() const
+double ChessBoard::CalculateWhitePoints() const
 {
     double total{};
 
@@ -74,7 +74,7 @@ double ChessBoard::calculate_white_points() const
     return total;
 }
 
-double ChessBoard::calculate_black_points() const
+double ChessBoard::CalculateBlackPoints() const
 {
     double total{};
 
@@ -122,47 +122,47 @@ double ChessBoard::calculate_black_points() const
     return total;
 }
 
-void ChessBoard::load_board() {
+void ChessBoard::LoadBoard() {
 
-    for (int i = 0; i < (int)piecePositions.size(); i++)
+    for (int i = 0; i < (int)m_piecePositions.size(); i++)
     {
         int column = i % 8;
         int row = i / 8;
 
-        if (piecePositions[i] == "ps") {
+        if (m_piecePositions[i] == "ps") {
             m_pieces.push_back(new Pawn{ Color::Black, row, column });
         }
-        else if (piecePositions[i] == "as") {
+        else if (m_piecePositions[i] == "as") {
             m_pieces.push_back(new Knight{ Color::Black, row, column });
         }
-        else if (piecePositions[i] == "fs") {
+        else if (m_piecePositions[i] == "fs") {
             m_pieces.push_back(new Bishop{ Color::Black, row, column });
         }
-        else if (piecePositions[i] == "ks") {
+        else if (m_piecePositions[i] == "ks") {
             m_pieces.push_back(new Rook{ Color::Black, row, column });
         }
-        else if (piecePositions[i] == "vs") {
+        else if (m_piecePositions[i] == "vs") {
             m_pieces.push_back(new Queen{ Color::Black, row, column });
         }
-        else if (piecePositions[i] == "ss") {
+        else if (m_piecePositions[i] == "ss") {
             m_pieces.push_back(new King{ Color::Black, row, column });
         }
-        else if (piecePositions[i] == "pb") {
+        else if (m_piecePositions[i] == "pb") {
             m_pieces.push_back(new Pawn{ Color::White, row, column });
         }
-        else if (piecePositions[i] == "ab") {
+        else if (m_piecePositions[i] == "ab") {
             m_pieces.push_back(new Knight{ Color::White, row, column });
         }
-        else if (piecePositions[i] == "fb") {
+        else if (m_piecePositions[i] == "fb") {
             m_pieces.push_back(new Bishop{ Color::White, row, column });
         }
-        else if (piecePositions[i] == "kb") {
+        else if (m_piecePositions[i] == "kb") {
             m_pieces.push_back(new Rook{ Color::White, row, column });
         }
-        else if (piecePositions[i] == "vb") {
+        else if (m_piecePositions[i] == "vb") {
             m_pieces.push_back(new Queen{ Color::White, row, column });
         }
-        else if (piecePositions[i] == "sb") {
+        else if (m_piecePositions[i] == "sb") {
             m_pieces.push_back(new King{ Color::White, row, column });
         }
     }
