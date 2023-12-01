@@ -6,7 +6,6 @@
 #include "knight.h"
 #include "queen.h"
 
-#include <iostream>
 #include <fstream>
 #include <algorithm>
 
