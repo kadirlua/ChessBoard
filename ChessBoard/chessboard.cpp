@@ -10,20 +10,23 @@
 #include <fstream>
 #include <algorithm>
 
-ChessBoard::~ChessBoard() {
-
+ChessBoard::~ChessBoard()
+{
     // release white and black pieces from memory
-    for (auto elem : m_pieces)
-        delete elem;
+    for (auto* elem : m_pieces) {
+		delete elem;
+	}
 }
 
-void ChessBoard::ReadFromFile(const std::string& fileName) {
+void ChessBoard::ReadFromFile(const std::string& fileName)
+{
     std::ifstream fileStream;
     std::string lines;
 
     fileStream.open(fileName);
-    while (fileStream >> lines)
+    while (fileStream >> lines) {
 		m_piecePositions.push_back(lines);
+	}
 }
 
 double ChessBoard::CalculateWhitePoints() const
@@ -42,34 +45,32 @@ double ChessBoard::CalculateWhitePoints() const
             return piece->GetColor() == Color::Black;
         });
 
-    for (const auto& elem : white_pieces)
-    {
+    for (const auto& elem : white_pieces) {
         bool isinDanger{};
 
         auto whitePos = elem->GetPosition();
 
-        for (const auto& blackPiece : black_pieces)
-        {
+        for (const auto& blackPiece : black_pieces) {
             auto blackPos = blackPiece->GetPosition();
             auto blackPossibleMoves = blackPiece->PossibleMoves();
 
             auto found = std::find(blackPossibleMoves.cbegin(), blackPossibleMoves.cend(), whitePos);
 
-            if (found != blackPossibleMoves.cend())
-            {
+            if (found != blackPossibleMoves.cend()) {
                 // check if it is in danger
-                if (blackPiece->CheckPath(m_pieces, whitePos))
-                {
+                if (blackPiece->CheckPath(m_pieces, whitePos)) {
                     isinDanger = true;
                     break;
                 }
             }
         }
 
-        if (isinDanger)
-            total += elem->GetPoint() / 2;
-        else
-            total += elem->GetPoint();
+        if (isinDanger) {
+			total += elem->GetPoint() / 2;
+		}
+        else {
+			total += elem->GetPoint();
+		}
     }
     return total;
 }
@@ -90,42 +91,39 @@ double ChessBoard::CalculateBlackPoints() const
             return piece->GetColor() == Color::Black;
         });
 
-    for (const auto& elem : black_pieces) 
-    {
+    for (const auto& elem : black_pieces) {
         bool isinDanger{};
 
         auto blackPos = elem->GetPosition();
 
-        for (const auto& whitePiece : white_pieces)
-        {
+        for (const auto& whitePiece : white_pieces) {
             auto whitePos = whitePiece->GetPosition();
             auto whitePossibleMoves = whitePiece->PossibleMoves();
 
             auto found = std::find(whitePossibleMoves.cbegin(), whitePossibleMoves.cend(), blackPos);
 
-            if (found != whitePossibleMoves.cend())
-            {
+            if (found != whitePossibleMoves.cend()) {
                 // check if it is in danger
-                if (whitePiece->CheckPath(m_pieces, blackPos))
-                {
+                if (whitePiece->CheckPath(m_pieces, blackPos)) {
                     isinDanger = true;
                     break;
                 }
             }
         }
 
-        if (isinDanger)
-            total += elem->GetPoint() / 2;
-        else
-            total += elem->GetPoint();
+        if (isinDanger) {
+			total += elem->GetPoint() / 2;
+		}
+        else {
+			total += elem->GetPoint();
+		}
     }
     return total;
 }
 
 void ChessBoard::LoadBoard() {
 
-    for (int i = 0; i < (int)m_piecePositions.size(); i++)
-    {
+    for (int i = 0; i < (int)m_piecePositions.size(); i++) {
         int column = i % 8;
         int row = i / 8;
 
