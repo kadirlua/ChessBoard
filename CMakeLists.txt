@@ -30,7 +30,5 @@ set(PROJECT_HEADERS
 			${PROJECT_INCLUDE_DIR}/king.h		
     )
 
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDE_DIR})
-
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDE_DIR})
