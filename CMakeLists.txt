@@ -31,4 +31,9 @@ set(PROJECT_HEADERS
     )
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE "/Zc:__cplusplus")
+endif()
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDE_DIR})
