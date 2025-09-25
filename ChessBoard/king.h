@@ -11,7 +11,7 @@ public:
     bool CheckPath(const std::vector<Piece*>& pieces,
         const PiecePosition& pos) const override;
 private:
-    double Distance(const PiecePosition& path1, const PiecePosition& path2) const noexcept;
+    static double Distance(const PiecePosition& path1, const PiecePosition& path2) noexcept;
     bool isClosertoKing(const std::vector<Piece*>& pieces, const PiecePosition& pos) const noexcept;
 };
 
