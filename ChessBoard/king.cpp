@@ -9,8 +9,8 @@ King::King(Color color, int row, int col) noexcept :
 // calculate between two paths
 double King::Distance(const PiecePosition& path1, const PiecePosition& path2) const noexcept
 {
-    double result = (double)(((path2.first - path1.first) * (path2.first - path1.first)) +
-        ((path2.second - path1.second) * (path2.second - path1.second)));
+    auto result = static_cast<double>(((path2.first - path1.first) * (path2.first - path1.first)) +
+									  ((path2.second - path1.second) * (path2.second - path1.second)));
 
     return result;
 }
