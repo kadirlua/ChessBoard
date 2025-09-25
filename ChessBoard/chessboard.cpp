@@ -123,7 +123,7 @@ double ChessBoard::CalculateBlackPoints() const
 
 void ChessBoard::LoadBoard() {
 
-    for (int i = 0; i < (int)m_piecePositions.size(); i++) {
+    for (int i = 0; i < static_cast<int>(m_piecePositions.size()); i++) {
         int column = i % 8;
         int row = i / 8;
 
