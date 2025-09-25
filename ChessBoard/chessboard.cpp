@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <algorithm>
+#include <utility>
 
 ChessBoard::~ChessBoard()
 {
@@ -24,7 +25,7 @@ void ChessBoard::ReadFromFile(const std::string& fileName)
 
     fileStream.open(fileName);
     while (fileStream >> lines) {
-		m_piecePositions.push_back(lines);
+		m_piecePositions.push_back(std::move(lines));
 	}
 }
 
